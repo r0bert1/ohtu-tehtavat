@@ -1,6 +1,7 @@
 package ohtu;
 
 import java.util.Date;
+import java.util.Arrays;
 import com.google.gson.Gson;
 import java.io.IOException;
 import org.apache.http.client.fluent.Request;
@@ -16,9 +17,11 @@ public class Main {
         
         System.out.println("Players from FIN " + (new Date()).toString());
         System.out.println("");
-        for (Player player : players) {
-            System.out.println(player);
-        }
+
+        Arrays.stream(players)
+            .filter(p -> p.getNationality().equals("FIN"))
+            .sorted((p1, p2) -> p2.compareTo(p1))
+            .forEach(p -> System.out.println(p));
     }
 }
 
