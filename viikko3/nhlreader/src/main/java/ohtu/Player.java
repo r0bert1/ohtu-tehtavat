@@ -31,7 +31,7 @@ public class Player implements Comparable<Player> {
     
     @Override
     public String toString() {
-        String string = String.format("%-20s%-5s%-1s + %-1s = %-1s",
+        String string = String.format("%-20s%-5s%-1s + %-1s = %s",
                 name, team, goals, assists, this.getTotal());
         return string;
     }
