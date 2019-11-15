@@ -44,13 +44,13 @@ public class Tester {
         
         sleep(2);
         
-        Random r = new Random();
+        
         element = driver.findElement(By.name("username"));
-        element.sendKeys("arto"+r.nextInt(100000));
+        element.sendKeys(usernameGenerator());
         element = driver.findElement(By.name("password"));
-        element.sendKeys("asd");
+        element.sendKeys("asd123456");
         element = driver.findElement(By.name("passwordConfirmation"));
-        element.sendKeys("asd");
+        element.sendKeys("asd123456");
         element = driver.findElement(By.name("signup"));
         
         sleep(2);
@@ -73,6 +73,17 @@ public class Tester {
         sleep(3);
         
         driver.quit();
+    }
+    
+    private static String usernameGenerator() {
+        Random r = new Random();
+        String username = "";
+        char c;
+        for (int i = 0; i < 10; i++) {
+            c = (char) (r.nextInt(26) + 'a');
+            username += c;
+        }        
+        return username;
     }
     
     private static void sleep(int n){
