@@ -26,14 +26,23 @@ public class Main {
             new PlaysIn("NYR")
         );*/        
         
-        Matcher m = new And(
+        /*Matcher m = new And(
             new HasAtLeast(20, "points"),
             new Or( 
                 new PlaysIn("NYR"),
                 new PlaysIn("NYI"),
                 new PlaysIn("NJD")
             )
-        );         
+        );*/
+        
+        QueryBuilder query = new QueryBuilder();
+        //Matcher m = query.build();
+        
+        //Matcher m = query.playsIn("NYR").build();
+        
+        Matcher m = query.playsIn("NYR")
+                         .hasAtLeast(5, "goals")
+                         .hasFewerThan(10, "goals").build();        
         
         for (Player player : stats.matches(m)) {
             System.out.println(player);
